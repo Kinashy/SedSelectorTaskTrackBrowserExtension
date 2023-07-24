@@ -1,0 +1,50 @@
+request:
+http://sed.rr22.local:8080/api/auth/login
+method: POST
+body:
+{
+    "login": "R22DOV11022000",
+    "password": "Syncmaster932b"
+}
+response:
+{
+    "token": "64a38f2554093a530954cdeb__5ba6273180e8cee86b0a9c8be63d023c__ff65cedc-5fa0-44f9-bef4-99b6606ffa60",
+    "chanceryName": "06 Канцелярия отдела эксплуатации информационных систем, технических средств и каналов связи",
+    "departmentName": null,
+    "sectionName": "06 Отдел эксплуатации информационных систем, технических средств и каналов связи",
+    "fio": "Деминов Олег Валерьевич",
+    "shortFio": "Деминов О. В.",
+    "surname": "Деминов",
+    "name": "Олег",
+    "patronymic": "Валерьевич",
+    "departmentId": null,
+    "sectionId": "5fb9dc98e370c902a8da5cdb",
+    "restrictedVisibility": false,
+    "position": "Ведущий специалист-эксперт",
+    "fullPosition": null,
+    "personnelNumber": null,
+    "workPhone": null,
+    "dob": null,
+    "fax": null,
+    "homePhone": null,
+    "phone": null,
+    "email": null,
+    "location": null,
+    "login": "R22DOV11022000",
+    "role": 1,
+    "headRole": 0,
+    "isController": false,
+    "password": "",
+    "passwordExpired": "2023-10-02T10:30:15.031+07:00",
+    "cabinet": null,
+    "fired": false,
+    "replacementUserId": null,
+    "canSeeDocumentsPreparedForSign": true,
+    "gasTransfer": false,
+    "gasRequisitesTransfer": false,
+    "id": "64a38f2554093a530954cdeb",
+    "dateTime": "2023-07-04T10:16:53.418+07:00",
+    "dateTimeLastChange": "2023-07-04T10:30:15.031+07:00"
+}
+
+
