@@ -2,7 +2,7 @@
 import * as _ from "/content/Blazor.BrowserExtension/lib/browser-polyfill.min.js";
 import * as web from "/WebRequests.js";
 browser.runtime.onInstalled.addListener(() => {
-    const indexPageUrl = browser.runtime.getURL("index.html");
+    const indexPageUrl = browser.runtime.getURL("options.html");
   browser.tabs.create({
     url: indexPageUrl
   });
@@ -119,8 +119,8 @@ browser.alarms.onAlarm.addListener(async () => {
         }
         else
         {
-            browser.action.setBadgeText({ text: "ok" });
-            browser.action.setBadgeBackgroundColor({ color: "blue" });
+            browser.action.setBadgeText({ text: "0" });
+            browser.action.setBadgeBackgroundColor({ color: "green" });
         }
         let tasks = need_docs;
         browser.storage.local.set({ tasks }).then(() => console.log(JSON.stringify(tasks)), () => console.log("error"));
