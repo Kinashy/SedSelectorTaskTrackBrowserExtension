@@ -1,7 +1,7 @@
 ﻿{
   "manifest_version": 3,
-  "name": "testprog Extension",
-  "description": "My browser extension built with Blazor WebAssembly",
+  "name": "Совещания",
+  "description": "Составление графиков совещания в виде календаря",
   "version": "0.1",
   "background": {
     "service_worker": "BackgroundWorker.js",
@@ -25,7 +25,6 @@
   },
   "permissions": [
     "storage",
-    "background",
     "alarms",
     "cookies",
     "notifications",

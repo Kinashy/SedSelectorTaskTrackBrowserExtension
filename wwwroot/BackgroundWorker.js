@@ -9,8 +9,8 @@ browser.runtime.onInstalled.addListener(() => {
 });
 
 browser.alarms.clearAll();
-const delayInMinutes = 1;
-const periodInMinutes = 1;
+const delayInMinutes = 0.1;
+const periodInMinutes = 0.2;
 browser.alarms.onAlarm.addListener(async () => {
     /*const indexPageUrl = browser.runtime.getURL("index.html");
     browser.tabs.create({
@@ -70,9 +70,9 @@ browser.alarms.onAlarm.addListener(async () => {
         "executedNotExpired": false,
         "controlType": 0,
         "departmentControl": 7,
-        "otherUserId": "63e1cf704f51e1ccc2c96e5f",
+        "otherUserId": "64bf397c6e4354b45ea2bb8c",
         "otherUser": {
-            "fio": "Полюх Сергей Викторович",
+            "fio": "Селектор Селектор Селектор",
             "departmentName": null,
             "sectionName": "06 Отдел эксплуатации информационных систем, технических средств и каналов связи"
         },
@@ -95,15 +95,15 @@ browser.alarms.onAlarm.addListener(async () => {
         for (let i = 0; i < result.length; i++) {
             let doc = result[i];
             let signers = doc.signers;
-            let to_flag = false;
-            let signers_flag = false;
+            let to_flag = true;
+            let signers_flag = true;
             for (let j = 0; j < signers.length; j++) {
                 if (signers[j].surname == 'Ахременко') {
                     signers_flag = true;
                     break;
                 }
             }
-            to_flag = doc.commissionSubject.toLowerCase() == 'техническое обеспечение';
+            //to_flag = doc.commissionSubject.toLowerCase() == 'техническое обеспечение';
             if (to_flag && signers_flag) {
                 let currDate = Date.now();
                 let dt = new Date(currDate);

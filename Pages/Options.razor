@@ -12,6 +12,7 @@
     {
         public string token { get; set; }
     }
+    
     private string _Status { get; set; }
     private string StatusTextColor { get; set; } = "red";
     private LoginResponse _LoginResponse { get; set; }
@@ -31,7 +32,7 @@
     async Task GetToken()
     {
         Console.WriteLine("Start getting token");
-        var response = await httpClient.PostAsJsonAsync("http://sed.rr22.local:8080/api/auth/login", _Person);
+        var response = await httpClient.PostAsJsonAsync("api/auth/login", _Person);
         if (response.IsSuccessStatusCode)
         {
             _LoginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
@@ -57,20 +58,20 @@
 <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
     <div class="mb-4">
         <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
-            Username
+            Логин
         </label>
         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" type="text"  placeholder="Username" @bind-value="_Person.login">
     </div>
     <div class="mb-6">
         <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
-            Password
+            Пароль
         </label>
         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" placeholder="******************" @bind-value="_Person.password">
         <p class="text-@StatusTextColor text-xs italic">@((MarkupString)_Status)</p>
     </div>
     <div class="flex items-center justify-center">
         <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-6 rounded" type="button" @onclick="GetToken">
-            Sign In
+            Войти
         </button>
     </div>
 </div>
