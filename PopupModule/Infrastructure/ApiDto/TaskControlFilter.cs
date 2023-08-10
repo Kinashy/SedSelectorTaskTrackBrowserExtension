@@ -2,7 +2,7 @@
 
 namespace testprog.PopupModule.Infrastructure.ApiDto
 {
-    public class FilterTaskControl
+    public class TaskControlFIlter
     {
         public int[] documentTypes { get; set; } = { 5, 7, 3, 1, 4, 8, 6 };
         public int periodFilter { get; set; } = 4;

@@ -26,8 +26,6 @@
     <Folder Include="PopupModule\Domain\Entities\" />
     <Folder Include="PopupModule\Domain\UseCases\Commands\" />
     <Folder Include="PopupModule\Domain\UseCases\Handlers\CommandHandlers\" />
-    <Folder Include="PopupModule\Domain\UseCases\Handlers\QueryHandlers\" />
-    <Folder Include="PopupModule\Domain\UseCases\Queries\" />
   </ItemGroup>
 
 </Project>
