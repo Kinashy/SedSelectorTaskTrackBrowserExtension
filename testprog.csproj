@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="Blazor.BrowserExtension" Version="0.10.*" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.*" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.*" PrivateAssets="all" />
@@ -20,7 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\" />
+    <Folder Include="OptionModule\Domain\Entities\" />
+    <Folder Include="OptionModule\Infrastructure\ModelsDto\" />
+    <Folder Include="PopupModule\Domain\Entities\" />
+    <Folder Include="PopupModule\Domain\UseCases\Commands\" />
+    <Folder Include="PopupModule\Domain\UseCases\Handlers\CommandHandlers\" />
+    <Folder Include="PopupModule\Domain\UseCases\Handlers\QueryHandlers\" />
+    <Folder Include="PopupModule\Domain\UseCases\Queries\" />
   </ItemGroup>
 
 </Project>

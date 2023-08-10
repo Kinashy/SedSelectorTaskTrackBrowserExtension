@@ -4,6 +4,7 @@ namespace testprog.Models
 {
     public class TaskControlResponseSedTask
     {
+        public string documentId { get; set; }
         public string numerator { get; set; }
         public string summaryOfDocument { get; set; }
         public int daysLeft { get; set; }

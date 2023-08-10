@@ -2,7 +2,7 @@
 {
     public class TasksOfDocumentRequestBody
     {
-        string token { get; set; }
-        string documentID { get; set; }
+        public string token { get; set; }
+        public string documentID { get; set; }
     }
 }

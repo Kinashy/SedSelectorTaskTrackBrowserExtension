@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using testprog.Models;
 
-namespace testprog.Models
+namespace testprog.PopupModule.Infrastructure.ApiDto
 {
-    public class TaskControlRequestBodyTaskFilter
+    public class FilterTaskControl
     {
         public int[] documentTypes { get; set; } = { 5, 7, 3, 1, 4, 8, 6 };
         public int periodFilter { get; set; } = 4;
@@ -22,7 +22,7 @@ namespace testprog.Models
         public bool executedNotExpired { get; set; } = false;
         public int controlType { get; set; } = 0;
         public int departmentControl { get; set; } = 7;
-        public string otherUserId { get; set; } = "64bf397c6e4354b45ea2bb8c";
+        public string otherUserId { get; set; } = "63e1cf704f51e1ccc2c96e5f";
         TaskControlRequestBodyResponsibleExecutor otherUser { get; set; } = new TaskControlRequestBodyResponsibleExecutor();
         public int controlSignType { get; set; } = 0;
         public string token { get; set; } = "";

@@ -1,21 +1,167 @@
-﻿@page "/popup.html"
+﻿@page "/popup_copy.html"
 @using System;
 @using System.Globalization;
-@inherits ViewModels.PopupViewModel
+@inherits BasePage
+@code
+{
+    class ControlPanelRequest
+    {
+        public class RequestUser
+        {
+            public string fio { get; set; } = "Селектор Селектор Селектор";
+            public string? departmentName { get; set; } = null;
+            public string sectionName { get; set; } = "06 Отдел эксплуатации информационных систем, технических средств и каналов связи";
+        }
+        public int[] documentTypes { get; set; } = { 5, 7, 3, 1, 4, 8, 6 };
+        public int periodFilter { get; set; } = 4;
+        public int termless { get; set; } = 0;
+        public bool onlyResolutions { get; set; } = false;
+        public List<string> controlTypes { get; set; } = new List<string>() { "without_control", "og_control", "special_control", "removed_from_control" };
+        public string from { get; set; } = "";
+        public string to { get; set; } = "";
+        public string createFrom { get; set; } = "";
+        public string createTo { get; set; } = "";
+        public List<string> numerators { get; set; } = new List<string>();
+        public string? documentSubType { get; set; } = null;
+        public int[] statuses { get; set; } = { 50 };
+        public bool onPerformanceExpired { get; set; } = false;
+        public bool onPerformanceNotExpired { get; set; } = true;
+        public bool executedExpired { get; set; } = false;
+        public bool executedNotExpired { get; set; } = false;
+        public int controlType { get; set; } = 0;
+        public int departmentControl { get; set; } = 7;
+        public string otherUserId { get; set; } = "64bf397c6e4354b45ea2bb8c";//"63e1cf704f51e1ccc2c96e5f";
+        RequestUser otherUser { get; set; } = new RequestUser();
+        public int controlSignType { get; set; } = 0;
+        public string token { get; set; } = "";
+    }
+
+    class RequestedTask
+    {
+        public string numerator { get; set; }
+        public string summaryOfDocument { get; set; }
+        public int daysLeft { get; set; }
+        public string dateForExecution { get; set; }
+        public string commissionSubject { get; set; }
+        public string documentSubType { get; set; }
+        public string internalNumber { get; set; }
+        public List<Signer> signers { get; set; }
+        public List<Responsible> responsibles { get; set; }
+        public class Signer
+        {
+            public string name { get; set; }
+            public string patronymic { get; set; }
+            public string surname { get; set; }
+            public string position { get; set; }
+        }
+        public class Responsible
+        {
+            public string name { get; set; }
+            public string patronymic { get; set; }
+            public string surname { get; set; }
+            public string position { get; set; }
+        }
+    }
+
+    @inject HttpClient _HttpClient
+    WebExtensions.Net.Storage.StorageArea _Storage;
+    DateTime _CurrentDate = DateTime.Now;
+    ControlPanelRequest _Request = new();
+    List<RequestedTask> _Tasks = new();
+    List<RequestedTask> _SortedTasks = new();
+    protected override Task OnInitializedAsync()
+    {
+        InitializeModel();
+        return base.OnInitializedAsync();
+    }
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+    private async void InitializeModel()
+    {
+        await GetLocalStorage();
+        await BuildRequest(_CurrentDate);
+        await DoRequest();
+        await SortTasks();
+        await InvokeAsync(StateHasChanged);
+    }
+    private async Task GetLocalStorage()
+    {
+        try
+        {
+            if (_Storage is null)
+                _Storage = await WebExtensions.Storage.GetLocal();
+        }
+        catch
+        {
+
+        }
+    }
+    private void AddMonth()
+    {
+        int countMonths = 1;
+        _CurrentDate = new DateTime(_CurrentDate.AddMonths(countMonths).Year, _CurrentDate.AddMonths(countMonths).Month, 1);
+        InitializeModel();
+    }
+    private void MinusMonth()
+    {
+        int countMonths = -1;
+        _CurrentDate = new DateTime(_CurrentDate.AddMonths(countMonths).Year, _CurrentDate.AddMonths(countMonths).Month, 1);
+        InitializeModel();
+    }
+    private async Task BuildRequest(DateTime date)
+    {
+        var res = await _Storage.Get(new WebExtensions.Net.Storage.StorageAreaGetKeys("token"));
+        _Request.token = res.GetProperty("token").ToString();
+        Console.WriteLine(_Request.token);
+        DateTime startMonth = new DateTime(date.Year, date.Month, 1);
+        startMonth = startMonth.AddDays(-2);
+        DateTime finishMonth = new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
+        finishMonth = finishMonth.AddDays(2);
+        _Request.from = $"{startMonth.ToString("yyyy")}-{startMonth.ToString("MM")}-{startMonth.ToString("dd")}T00:00:00.000+03:00";
+        _Request.to = $"{finishMonth.ToString("yyyy")}-{finishMonth.ToString("MM")}-{finishMonth.ToString("dd")}T00:00:00.000+03:00";
+        _Request.createFrom = $"{date.ToString("yyyy")}-01-01T00:00:00.000Z";
+        _Request.createTo = $"{DateTime.Now.ToString("yyyy")}-{DateTime.Now.ToString("MM")}-{DateTime.Now.AddDays(1).ToString("dd")}T00:00:00.000Z";
+
+    }
+    private async Task DoRequest()
+    {
+        Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(_Request));
+        var response = await _HttpClient.PostAsJsonAsync("api/task/taskControl", _Request);
+        if (response.IsSuccessStatusCode)
+        {
+
+            _Tasks = await response.Content.ReadFromJsonAsync<List<RequestedTask>>();
+            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(_Tasks));
+        }
+        else
+        {
+            Console.WriteLine("Error " + response.StatusCode);
+        }
+    }
+    private async Task SortTasks()
+    {
+        _SortedTasks.Clear();
+        var e = _Tasks.Where(i => true/*i.dateForExecution.StartsWith(_CurrentDate.ToString("yyyy-MM-dd")) && */ /*(i.commissionSubject.ToLower().Contains("техническое обеспечение") && i.signers[0].surname == "Ахременко")*/);
+        _SortedTasks.AddRange(e.ToArray());
+        Console.WriteLine("sorted: " + System.Text.Json.JsonSerializer.Serialize(_SortedTasks));
+    }
+}
 <div class="flex items-center justify-center py-0 px-0">
     <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
     <div class="max-w-sm w-full shadow-lg">
         <div class="md:p-8 p-2 dark:bg-gray-800 bg-white rounded-t">
             <div class="px-4 flex items-center justify-between">
-                <span tabindex="0" class="focus:outline-none  text-base font-bold dark:text-gray-100 text-gray-800">@(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(CurrentDate.Month))) @CurrentDate.Year</span>
+                <span tabindex="0" class="focus:outline-none  text-base font-bold dark:text-gray-100 text-gray-800">@(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(_CurrentDate.Month))) @_CurrentDate.Year</span>
                 <div class="flex items-center">
-                    <button aria-label="calendar backward" class="focus:text-gray-400 hover:text-gray-400 text-gray-800 dark:text-gray-100" @onclick="@(() => AddMonth(false))">
+                    <button aria-label="calendar backward" class="focus:text-gray-400 hover:text-gray-400 text-gray-800 dark:text-gray-100" @onclick="MinusMonth">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" )">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <polyline points="15 6 9 12 15 18" />
                         </svg>
                     </button>
-                    <button aria-label="calendar forward" class="focus:text-gray-400 hover:text-gray-400 ml-3 text-gray-800 dark:text-gray-100" @onclick="@(() => AddMonth(true))">
+                    <button aria-label="calendar forward" class="focus:text-gray-400 hover:text-gray-400 ml-3 text-gray-800 dark:text-gray-100" @onclick="AddMonth">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler  icon-tabler-chevron-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <polyline points="9 6 15 12 9 18" />
@@ -68,7 +214,7 @@
                     <tbody>
                         @for (int k = 0; k < 1; k++)
                         {
-                            DateTime date = new DateTime(CurrentDate.Year, CurrentDate.Month, 1);
+                            DateTime date = new DateTime(_CurrentDate.Year, _CurrentDate.Month, 1);
                             string pt = "pt-2";
                             @for (int i = 0; i < 6; i++, pt = "pt-0")
                             {
@@ -76,7 +222,7 @@
                                     @for (int j = 0; j < 7; j++)
                                     {
                                         <td class="@pt">
-                                            @if (((j == 6 && date.DayOfWeek == DayOfWeek.Sunday) || (date.DayOfWeek == ((DayOfWeek)j + 1))) && (date.Month == CurrentDate.Month))
+                                            @if (((j == 6 && date.DayOfWeek == DayOfWeek.Sunday) || (date.DayOfWeek == ((DayOfWeek)j + 1))) && (date.Month == _CurrentDate.Month))
                                             {
                                                 /*
                                                 <div class="flex items-center justify-center w-full rounded-full cursor-pointer">
@@ -85,11 +231,11 @@
                                                 */
                                                 string ring = "";
                                                 string text = "text-gray-500";
-                                                if (Tasks.Any(i => i.dateForExecution.Contains(date.ToString("yyyy-MM-dd"))))
+                                                if (_SortedTasks.Any(i => i.dateForExecution.Contains(date.ToString("yyyy-MM-dd"))))
                                                 {
                                                     text = "text-indigo-500";
                                                 }
-                                                if (date.Date == CurrentDate.Date)
+                                                if (date.Date == _CurrentDate.Date)
                                                 {
                                                     ring = "ring-1 ring-blue-300";
                                                 }
@@ -107,7 +253,7 @@
                                                 var clickDate = date;
                                                 <div class="w-full h-full">
                                                     <div class="flex items-center justify-center w-full rounded-full cursor-pointer">
-                                                        <a role="link" tabindex="0" class="focus:outline-none text-base w-8 h-8 flex items-center justify-center font-medium @text rounded-full @ring" target="_blank" @onclick="@(e => SetCurrentDate(clickDate.Year, clickDate.Month, clickDate.Day))">@date.Day</a>
+                                                        <a role="link" tabindex="0" class="focus:outline-none text-base w-8 h-8 flex items-center justify-center font-medium @text rounded-full @ring" target="_blank" @onclick="@(e => _CurrentDate = new DateTime(clickDate.Year, clickDate.Month, clickDate.Day))">@date.Day</a>
                                                     </div>
                                                 </div>
                                                 date = date.AddDays(1);
@@ -123,7 +269,7 @@
         </div>
         <div class="md:py-8 py-2 md:px-16 px-5 dark:bg-gray-700 bg-gray-50 rounded-b">
             <div class="px-0">
-                @foreach (var task in CurrentTasks)
+                @foreach (var task in _SortedTasks.AsEnumerable().Where(t => t.dateForExecution.Contains(_CurrentDate.ToString("yyyy-MM-dd"))))
                 {
                     <div class="border-b pb-4 pt-2 border-gray-400 border-dashed">
                         <a tabindex="0" class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">@task.internalNumber </a>
@@ -138,7 +284,7 @@
                         </p>
                     </div>
                 }
-                @if (CurrentTasks is null || CurrentTasks.Length == 0)
+                @if (_SortedTasks.AsEnumerable().Where(t => t.dateForExecution.Contains(_CurrentDate.ToString("yyyy-MM-dd"))).Count() == 0)
                 {
                     <div class="border-b pb-4 border-gray-400 border-dashed">
                         <p class="text-xs font-light leading-3 text-gray-500 dark:text-gray-300">  </p>
