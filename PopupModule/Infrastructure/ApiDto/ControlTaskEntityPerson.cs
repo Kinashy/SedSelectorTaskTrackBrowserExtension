@@ -1,6 +1,6 @@
 ﻿namespace testprog.PopupModule.Infrastructure.ApiDto
 {
-    public class TaskPerson
+    public class ControlTaskEntityPerson // Response: api/task/tasksOfDocument
     {
         public string name { get; set; }
         public string patronymic { get; set; }

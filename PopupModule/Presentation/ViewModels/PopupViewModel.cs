@@ -7,8 +7,8 @@ namespace testprog.PopupModule.Presentation.ViewModels
 {
     public class PopupViewModel : BasePage
     {
-        public List<SedTaskDTO> _AllTasks { get; private set; }
-        public DateTime CurrentDate { get; set; }
-        public PopupViewModel() { }
+        public List<DateTime> SelectorDates { get; } = new List<DateTime>();
+        public List<SedTaskDTO> CurrentTasks { get; private set; }
+        public DateTime CurrentDate { get; }
     }
 }

@@ -6,14 +6,14 @@ using testprog.PopupModule.Infrastructure.DTOModels;
 
 namespace testprog.PopupModule.Domain.UseCases.Queries
 {
-    public class GetAllTasks : IQuery<Task<List<SedTaskDTO>>>
+    public class GetAllControlTasks : IQuery<Task<List<SedTaskDTO>>>
     {
         public string Token { get; }
         public DateTime CreateFrom { get; }
         public DateTime CreateTo { get; }
         public DateTime From { get; }
         public DateTime To { get; }
-        public GetAllTasks(string token, DateTime createFrom, DateTime createTo, DateTime from, DateTime to) 
+        public GetAllControlTasks(string token, DateTime createFrom, DateTime createTo, DateTime from, DateTime to) 
         {
             Token = token;
             CreateFrom = createFrom;

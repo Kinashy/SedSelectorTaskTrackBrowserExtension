@@ -24,8 +24,6 @@
     <Folder Include="OptionModule\Domain\Entities\" />
     <Folder Include="OptionModule\Infrastructure\ModelsDto\" />
     <Folder Include="PopupModule\Domain\Entities\" />
-    <Folder Include="PopupModule\Domain\UseCases\Commands\" />
-    <Folder Include="PopupModule\Domain\UseCases\Handlers\CommandHandlers\" />
   </ItemGroup>
 
 </Project>

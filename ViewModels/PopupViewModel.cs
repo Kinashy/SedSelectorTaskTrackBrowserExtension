@@ -5,13 +5,8 @@ using System.Threading.Tasks;
 using testprog.Models;
 using WebExtensions.Net.Storage;
 using Blazor.BrowserExtension.Pages;
-using Blazor.BrowserExtension;
-using System.Runtime.InteropServices;
-using System.ComponentModel;
 using System.Net.Http.Json;
-using System.Collections;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Collections.Generic;
 
 namespace testprog.ViewModels

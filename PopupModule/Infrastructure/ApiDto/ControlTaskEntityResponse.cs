@@ -2,7 +2,7 @@
 
 namespace testprog.PopupModule.Infrastructure.ApiDto
 {
-    public class SedTask
+    public class ControlTaskEntityResponse // Response: api/task/taskControl
     {
         public string documentId { get; set; }
         public string numerator { get; set; }
@@ -12,7 +12,7 @@ namespace testprog.PopupModule.Infrastructure.ApiDto
         public string commissionSubject { get; set; }
         public string documentSubType { get; set; }
         public string internalNumber { get; set; }
-        public TaskPerson[] signers { get; set; }
-        public TaskPerson[] responsibles { get; set; }
+        public ControlTaskEntityPerson[] signers { get; set; }
+        public ControlTaskEntityPerson[] responsibles { get; set; }
     }
 }

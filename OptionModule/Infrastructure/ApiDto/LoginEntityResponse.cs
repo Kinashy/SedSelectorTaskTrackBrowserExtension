@@ -1,6 +1,6 @@
 ﻿namespace testprog.OptionModule.Infrastructure.ApiDto
 {
-    public class UserInformation
+    public class LoginEntityResponse // Response: 
     {
         public string token { get; set; }
         public string sectionName { get; set; }

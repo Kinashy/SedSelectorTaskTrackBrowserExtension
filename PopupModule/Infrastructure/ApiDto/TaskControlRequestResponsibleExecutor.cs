@@ -1,6 +1,6 @@
 ﻿namespace testprog.PopupModule.Infrastructure.ApiDto
 {
-    public class ResponsibleExecutor
+    public class TaskControlRequestResponsibleExecutor // GET: api/task/tasksOfDocument
     {
         public string fio { get; set; } = "Селектор Селектор Селектор";
         public string? departmentName { get; set; } = null;

@@ -9,25 +9,25 @@ using testprog.OptionModule.Infrastructure.ApiDto;
 
 namespace testprog.OptionModule.Domain.UseCases.Handlers.QueryHandlers
 {
-    public class LoginQueryHandler : IQueryHandler<LoginQuery, Task<UserInformation>>
+    public class LoginHandler : IQueryHandler<Login, Task<LoginEntityResponse>>
     {
         private readonly HttpClient _httpClient;
-        public LoginQueryHandler(HttpClient httpClient)
+        public LoginHandler(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
-        public async Task<UserInformation> Execute(LoginQuery loginToSed)
+        public async Task<LoginEntityResponse> Execute(Login loginToSed)
         {
-            UserInformation userInformation = null;
+            LoginEntityResponse userInformation = null;
             try
             {
-                RequestAuthorization requestBody = new RequestAuthorization();
+                LoginRequest requestBody = new LoginRequest();
                 requestBody.password = loginToSed.Password;
                 requestBody.login = loginToSed.UserName;
                 var response = await _httpClient.PostAsJsonAsync("api/auth/login", requestBody);
                 if (response.IsSuccessStatusCode)
                 {
-                    userInformation = await response.Content.ReadFromJsonAsync<UserInformation>();
+                    userInformation = await response.Content.ReadFromJsonAsync<LoginEntityResponse>();
                 }
                 else
                 {

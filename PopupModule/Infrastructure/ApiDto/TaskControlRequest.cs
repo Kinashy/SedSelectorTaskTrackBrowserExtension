@@ -2,7 +2,7 @@
 
 namespace testprog.PopupModule.Infrastructure.ApiDto
 {
-    public class TaskControlFIlter
+    public class TaskControlRequest // GET: api/task/taskControl
     {
         public int[] documentTypes { get; set; } = { 5, 7, 3, 1, 4, 8, 6 };
         public int periodFilter { get; set; } = 4;
@@ -23,7 +23,7 @@ namespace testprog.PopupModule.Infrastructure.ApiDto
         public int controlType { get; set; } = 0;
         public int departmentControl { get; set; } = 7;
         public string otherUserId { get; set; } = "63e1cf704f51e1ccc2c96e5f";
-        TaskControlRequestBodyResponsibleExecutor otherUser { get; set; } = new TaskControlRequestBodyResponsibleExecutor();
+        TaskControlRequestResponsibleExecutor otherUser { get; set; } = new TaskControlRequestResponsibleExecutor();
         public int controlSignType { get; set; } = 0;
         public string token { get; set; } = "";
     }

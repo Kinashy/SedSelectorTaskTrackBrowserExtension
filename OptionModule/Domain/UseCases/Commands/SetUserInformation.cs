@@ -5,8 +5,8 @@ namespace testprog.OptionModule.Domain.UseCases.Commands
 {
     public class SetUserInformation : CqrsCore.ICommand
     {
-        public UserInformation Information { get; }
-        public SetUserInformation(UserInformation information)
+        public LoginEntityResponse Information { get; }
+        public SetUserInformation(LoginEntityResponse information)
         {
             Information = information;
         }

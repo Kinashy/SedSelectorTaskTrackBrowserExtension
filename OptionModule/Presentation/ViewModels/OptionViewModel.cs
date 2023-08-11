@@ -44,7 +44,7 @@ namespace testprog.OptionModule.Presentation.ViewModels
         {
             this.Active = false;
             Progress = 0;
-            var userInfo = await QueryDispatcher.Execute<LoginQuery, Task<UserInformation>>(new LoginQuery(UserName, Password));
+            var userInfo = await QueryDispatcher.Execute<Login, Task<LoginEntityResponse>>(new Login(UserName, Password));
             if (userInfo != null)
             {
                 CommandDispatcher.Execute<SetUserInformation>(new SetUserInformation(userInfo));

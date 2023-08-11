@@ -10,26 +10,26 @@ using testprog.PopupModule.Infrastructure.DTOModels;
 
 namespace testprog.PopupModule.Domain.UseCases.Handlers.QueryHandlers
 {
-    public class GetAllTasksHandler : IQueryHandler<GetAllTasks, Task<List<SedTaskDTO>>>
+    public class GetAllControlTasksHandler : IQueryHandler<GetAllControlTasks, Task<List<SedTaskDTO>>>
     {
         private readonly HttpClient _httpClient;
         private readonly IMapper _mapper;
-        GetAllTasksHandler(HttpClient httpClient, IMapper mapper)
+        GetAllControlTasksHandler(HttpClient httpClient, IMapper mapper)
         {
             _httpClient = httpClient;
             _mapper = mapper;
         }
-        public async Task<List<SedTaskDTO>> Execute(GetAllTasks filter)
+        public async Task<List<SedTaskDTO>> Execute(GetAllControlTasks filter)
         {
-            TaskControlFIlter filterDto = new TaskControlFIlter();
+            TaskControlRequest filterDto = new TaskControlRequest();
             List<SedTaskDTO> tasks = null;
-            filterDto = _mapper.Map<TaskControlFIlter>(filter);
+            filterDto = _mapper.Map<TaskControlRequest>(filter);
             try
             {
                 var response = await _httpClient.PostAsJsonAsync("api/task/taskControl", filter);
                 if (response.IsSuccessStatusCode)
                 {
-                    List<SedTask> responsed = await response.Content.ReadFromJsonAsync<List<SedTask>>();
+                    List<ControlTaskEntityResponse> responsed = await response.Content.ReadFromJsonAsync<List<ControlTaskEntityResponse>>();
                     tasks = _mapper.Map<List<SedTaskDTO>>(responsed);
                 }
                 else

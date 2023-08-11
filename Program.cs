@@ -42,7 +42,7 @@ namespace testprog
             builder.Services.AddSingleton<IQueryDispatcher, QueryDispatcher>();
             builder.Services.AddSingleton<ICommandDispatcher, CommandDispatcher>();
             builder.Services.AddSingleton<IMapper>(MyMapper);
-            builder.Services.AddSingleton<IQueryHandler<LoginQuery, Task<UserInformation>>, LoginQueryHandler>();
+            builder.Services.AddSingleton<IQueryHandler<Login, Task<LoginEntityResponse>>, LoginHandler>();
             builder.Services.AddSingleton<IQueryHandler<GetStorageFieldValue, Task<string?>>, GetStorageFieldValueHandler>();
             builder.Services.AddSingleton<ICommandHandler<SetUserInformation>, SetUserInformationHandler>();
 
