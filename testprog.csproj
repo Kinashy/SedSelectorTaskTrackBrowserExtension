@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\images\m_calendar_icon_32.png" />
     <Content Remove="wwwroot\WebRequests.js" />
   </ItemGroup>
 
