@@ -1,5 +1,4 @@
-﻿using testprog.Models;
-
+﻿
 namespace testprog.PopupModule.Infrastructure.ApiDto
 {
     public class ControlTaskEntityResponse // Response: api/task/taskControl

@@ -1,4 +1,4 @@
-﻿using testprog.Models;
+﻿
 
 namespace testprog.PopupModule.Infrastructure.ApiDto
 {

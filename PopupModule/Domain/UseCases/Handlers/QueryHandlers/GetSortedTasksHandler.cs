@@ -5,7 +5,6 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using testprog.CqrsCore;
-using testprog.Models;
 using testprog.PopupModule.Domain.UseCases.Queries;
 using testprog.PopupModule.Infrastructure.ApiDto;
 using testprog.PopupModule.Infrastructure.DTOModels;

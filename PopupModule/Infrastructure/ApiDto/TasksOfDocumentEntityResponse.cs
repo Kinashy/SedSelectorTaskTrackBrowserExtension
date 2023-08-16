@@ -1,4 +1,4 @@
-﻿using testprog.Models;
+﻿
 
 namespace testprog.PopupModule.Infrastructure.ApiDto
 {
@@ -23,15 +23,15 @@ namespace testprog.PopupModule.Infrastructure.ApiDto
         //public string[] childTasks { get; set; }
         public TasksOfDocumentEntityController[] controllers { get; set; }
         public TasksOfDocumentEntityResponsible[] responsibles { get; set; }
-        public TasksOfDocumentResponseCreator creator { get; set; }
-        public TasksOfDocumentResponseExecutor[] executors { get; set; }
+        public TasksOfDocumentEntityCreator creator { get; set; }
+        public TasksOfDocumentEntityExecutor[] executors { get; set; }
         public string[] taskInWorkUsers { get; set; }
         public string[] toReport { get; set; }
-        public TasksOfDocumentResponseSigner[] signers { get; set; }
-        public TasksOfDocumentResponseForInformationItem[] forInformation { get; set; }
+        public TasksOfDocumentEntitySigner[] signers { get; set; }
+        public TasksOfDocumentEntityForInformationItem[] forInformation { get; set; }
         public bool uread { get; set; }
         public bool creatorStart { get; set; }
-        public TasksOfDocumentResponseDocumentInfo documentInfo { get; set; }
+        public TasksOfDocumentEntityDocumentInfo documentInfo { get; set; }
         public string id { get; set; }
         public string dateTime { get; set; }
         public string dateTimeLastChange { get; set; }
