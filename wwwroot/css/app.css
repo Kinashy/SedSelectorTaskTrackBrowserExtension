@@ -142,7 +142,7 @@ a, .btn-link {
     --percentage: var(--value);
     --primary: #369;
     --secondary: #adf;
-    --size: 100px;
+    --size: 130px;
     width: var(--size);
     aspect-ratio: 1;
     border-radius: 50%;
@@ -150,6 +150,7 @@ a, .btn-link {
     overflow: hidden;
     display: grid;
     place-items: center;
+    margin: 10px;
 }
 
     [role="progressbar"]::before {

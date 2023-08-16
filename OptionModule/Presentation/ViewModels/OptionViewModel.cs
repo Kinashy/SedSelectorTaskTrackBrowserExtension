@@ -15,10 +15,6 @@ namespace testprog.OptionModule.Presentation.ViewModels
     public class OptionViewModel : BasePage
     {
         [Inject]
-        public HttpClient HttpClient { get; set; }
-        [Inject]
-        public IMapper MyMapper { get; set; }
-        [Inject]
         IQueryDispatcher QueryDispatcher { get; set; }
         [Inject]
         ICommandDispatcher CommandDispatcher { get; set; }
@@ -49,6 +45,7 @@ namespace testprog.OptionModule.Presentation.ViewModels
             {
                 CommandDispatcher.Execute<SetUserInformation>(new SetUserInformation(userInfo));
                 await QueryDispatcher.Execute<GetStorageFieldValue, Task<string?>>(new GetStorageFieldValue("fio"));
+                //string token = await QueryDispatcher.Execute<GetStorageFieldValue, Task<string?>>(new GetStorageFieldValue("token"));
                 Status = $"Здравствуйте, {userInfo.fio}!";
             }
             else

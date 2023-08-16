@@ -10,5 +10,6 @@ namespace testprog.PopupModule.Domain
         public void AddList(List<SedTaskDTO> tasks);
         public List<SedTaskDTO> GetAllByDate(DateTime date);
         public void RemoveAll();
+        public List<DateTime> GetDates();
     }
 }

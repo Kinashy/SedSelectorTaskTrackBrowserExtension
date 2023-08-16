@@ -14,19 +14,24 @@ namespace testprog.PopupModule.Domain.UseCases.Handlers.QueryHandlers
     {
         private readonly HttpClient _httpClient;
         private readonly IMapper _mapper;
-        GetAllControlTasksHandler(HttpClient httpClient, IMapper mapper)
+        public GetAllControlTasksHandler(HttpClient httpClient, IMapper mapper)
         {
             _httpClient = httpClient;
             _mapper = mapper;
         }
         public async Task<List<SedTaskDTO>> Execute(GetAllControlTasks filter)
         {
-            TaskControlRequest filterDto = new TaskControlRequest();
+            TaskControlRequest filterDto = new();
             List<SedTaskDTO> tasks = null;
-            filterDto = _mapper.Map<TaskControlRequest>(filter);
+            filterDto.to = $"{filter.To.ToString("yyyy")}-{filter.To.ToString("MM")}-{filter.To.ToString("dd")}T00:00:00.000+03:00";
+            filterDto.from = $"{filter.From.ToString("yyyy")}-{filter.From.ToString("MM")}-{filter.From.ToString("dd")}T00:00:00.000+03:00";
+            filterDto.createFrom = $"{filter.CreateFrom.ToString("yyyy")}-{filter.CreateFrom.ToString("MM")}-{filter.CreateFrom.ToString("dd")}T00:00:00.000Z";
+            filterDto.createFrom = $"{filter.CreateTo.ToString("yyyy")}-{filter.CreateTo.ToString("MM")}-{filter.CreateTo.ToString("dd")}T00:00:00.000Z";
+            filterDto.token = filter.Token;
+            //filterDto = _mapper.Map<TaskControlRequest>(filter);
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("api/task/taskControl", filter);
+                var response = await _httpClient.PostAsJsonAsync("api/task/taskControl", filterDto);
                 if (response.IsSuccessStatusCode)
                 {
                     List<ControlTaskEntityResponse> responsed = await response.Content.ReadFromJsonAsync<List<ControlTaskEntityResponse>>();

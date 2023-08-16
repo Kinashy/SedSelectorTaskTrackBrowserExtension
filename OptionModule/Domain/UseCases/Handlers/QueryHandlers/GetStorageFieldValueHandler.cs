@@ -16,8 +16,11 @@ namespace testprog.OptionModule.Domain.UseCases.Handlers.QueryHandlers
         }
         public async Task<string?> Execute(GetStorageFieldValue field)
         {
+            //var res = await _StorageArea.Get(new WebExtensions.Net.Storage.StorageAreaGetKeys("token"));
+            //return res.GetProperty("token").ToString();
             var storage = await _webExtensions.Storage.GetLocal();
-            return (await storage.Get(new StorageAreaGetKeys("fio"))).GetProperty(field.Field).ToString();
+            var res = await storage.Get(new WebExtensions.Net.Storage.StorageAreaGetKeys(field.Field));
+            return res.GetProperty(field.Field).ToString();
         }
     }
 }

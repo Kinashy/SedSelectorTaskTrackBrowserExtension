@@ -1,7 +1,9 @@
 ﻿@page "/popup.html"
 @using System;
 @using System.Globalization;
-@inherits ViewModels.PopupViewModel
+@inherits PopupModule.Presentation.ViewModels.PopupViewModel
+@if(this.Active)
+{
 <div class="flex items-center justify-center py-0 px-0">
     <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
     <div class="max-w-sm w-full shadow-lg">
@@ -85,7 +87,7 @@
                                                 */
                                                 string ring = "";
                                                 string text = "text-gray-500";
-                                                if (Tasks.Any(i => i.dateForExecution.Contains(date.ToString("yyyy-MM-dd"))))
+                                                if (SelectorDates.Any(i => i.Date == date.Date))
                                                 {
                                                     text = "text-indigo-500";
                                                 }
@@ -107,7 +109,7 @@
                                                 var clickDate = date;
                                                 <div class="w-full h-full">
                                                     <div class="flex items-center justify-center w-full rounded-full cursor-pointer">
-                                                        <a role="link" tabindex="0" class="focus:outline-none text-base w-8 h-8 flex items-center justify-center font-medium @text rounded-full @ring" target="_blank" @onclick="@(e => SetCurrentDate(clickDate.Year, clickDate.Month, clickDate.Day))">@date.Day</a>
+                                                        <a role="link" tabindex="0" class="focus:outline-none text-base w-8 h-8 flex items-center justify-center font-medium @text rounded-full @ring" target="_blank" @onclick="@(e => SetCurrentDate(new DateTime(clickDate.Year, clickDate.Month, clickDate.Day)))">@date.Day</a>
                                                     </div>
                                                 </div>
                                                 date = date.AddDays(1);
@@ -126,19 +128,14 @@
                 @foreach (var task in CurrentTasks)
                 {
                     <div class="border-b pb-4 pt-2 border-gray-400 border-dashed">
-                        <a tabindex="0" class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">@task.internalNumber </a>
+                        <a tabindex="0" class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">@task.Name </a>
                         <p class="text-sm pt-2 leading-4 leading-none text-gray-600 dark:text-gray-300">
-                            <span class="font-medium">Предмет: </span> @task.commissionSubject <br />
-                            <span class="font-medium">Описание: </span> @task.summaryOfDocument <br />
-
-                            @foreach (var resp in task.responsibles)
-                            {
-                                //@resp.position <br /> @resp.surname <br /> @resp.name <br /> @resp.patronymic <br />
-                            }
+                            <span class="font-medium">Предмет: </span> @task.Subject <br />
+                            <span class="font-medium">Описание: </span> @task.Description <br />
                         </p>
                     </div>
                 }
-                @if (CurrentTasks is null || CurrentTasks.Length == 0)
+                @if (CurrentTasks is null || CurrentTasks.Count == 0)
                 {
                     <div class="border-b pb-4 border-gray-400 border-dashed">
                         <p class="text-xs font-light leading-3 text-gray-500 dark:text-gray-300">  </p>
@@ -152,3 +149,8 @@
         </div>
     </div>
 </div>
+}
+else
+{
+    <div role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="--value: @this.Progress"></div>
+}

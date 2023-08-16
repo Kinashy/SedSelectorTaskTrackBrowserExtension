@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -13,6 +14,13 @@ using testprog.OptionModule.Domain.UseCases.Handlers.CommandHadlers;
 using testprog.OptionModule.Domain.UseCases.Handlers.QueryHandlers;
 using testprog.OptionModule.Domain.UseCases.Queries;
 using testprog.OptionModule.Infrastructure.ApiDto;
+using testprog.PopupModule.Domain;
+using testprog.PopupModule.Domain.UseCases.Commands;
+using testprog.PopupModule.Domain.UseCases.Handlers.CommandHandlers;
+using testprog.PopupModule.Domain.UseCases.Handlers.QueryHandlers;
+using testprog.PopupModule.Domain.UseCases.Queries;
+using testprog.PopupModule.Infrastructure;
+using testprog.PopupModule.Infrastructure.DTOModels;
 
 namespace testprog
 {
@@ -45,7 +53,12 @@ namespace testprog
             builder.Services.AddSingleton<IQueryHandler<Login, Task<LoginEntityResponse>>, LoginHandler>();
             builder.Services.AddSingleton<IQueryHandler<GetStorageFieldValue, Task<string?>>, GetStorageFieldValueHandler>();
             builder.Services.AddSingleton<ICommandHandler<SetUserInformation>, SetUserInformationHandler>();
-
+            builder.Services.AddSingleton<ISedTaskRepository, SedTaskRepository>();
+            builder.Services.AddSingleton<IQueryHandler<GetAllControlTasks, Task<List<SedTaskDTO>>>, GetAllControlTasksHandler>();
+            builder.Services.AddSingleton<IQueryHandler<GetAllDatesOfTasks, List<DateTime>>, GetAllDatesOfTasksHandler>();
+            builder.Services.AddSingleton<IQueryHandler<GetSedTasksByDate, List<SedTaskDTO>>, GetSedTasksByDateHandler>();
+            builder.Services.AddSingleton<ICommandHandler<AddSedTasks>, AddSedTasksHandler>();
+            builder.Services.AddSingleton<ICommandHandler<RemoveAllSedTasks>, RemoveAllSedTasksHandler>();
             builder.RootComponents.Add<App>("#app");
             builder.RootComponents.Add<HeadOutlet>("head::after");
             builder.Services.AddBrowserExtensionServices();
