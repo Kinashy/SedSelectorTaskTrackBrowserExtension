@@ -13,6 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\**\*" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\WebRequests.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="OptionModule\Domain\Entities\" />
     <Folder Include="OptionModule\Infrastructure\ModelsDto\" />
     <Folder Include="PopupModule\Domain\Entities\" />

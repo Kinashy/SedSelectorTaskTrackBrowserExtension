@@ -1,0 +1,154 @@
+﻿@page "/popup2.html"
+@using System;
+@using System.Globalization;
+@inherits ViewModels.PopupViewModel
+<div class="flex items-center justify-center py-0 px-0">
+    <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
+    <div class="max-w-sm w-full shadow-lg">
+        <div class="md:p-8 p-2 dark:bg-gray-800 bg-white rounded-t">
+            <div class="px-4 flex items-center justify-between">
+                <span tabindex="0" class="focus:outline-none  text-base font-bold dark:text-gray-100 text-gray-800">@(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(CurrentDate.Month))) @CurrentDate.Year</span>
+                <div class="flex items-center">
+                    <button aria-label="calendar backward" class="focus:text-gray-400 hover:text-gray-400 text-gray-800 dark:text-gray-100" @onclick="@(() => AddMonth(false))">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" )">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <polyline points="15 6 9 12 15 18" />
+                        </svg>
+                    </button>
+                    <button aria-label="calendar forward" class="focus:text-gray-400 hover:text-gray-400 ml-3 text-gray-800 dark:text-gray-100" @onclick="@(() => AddMonth(true))">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler  icon-tabler-chevron-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <polyline points="9 6 15 12 9 18" />
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+            <div class="flex items-center justify-between pt-2 overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="w-full flex justify-center">
+                                    <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">Пн</p>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="w-full flex justify-center">
+                                    <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">Вт</p>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="w-full flex justify-center">
+                                    <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">Ср</p>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="w-full flex justify-center">
+                                    <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">Чт</p>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="w-full flex justify-center">
+                                    <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">Пт</p>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="w-full flex justify-center">
+                                    <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">Сб</p>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="w-full flex justify-center">
+                                    <p class="text-base font-medium text-center text-gray-800 dark:text-gray-100">Вс</p>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int k = 0; k < 1; k++)
+                        {
+                            DateTime date = new DateTime(CurrentDate.Year, CurrentDate.Month, 1);
+                            string pt = "pt-2";
+                            @for (int i = 0; i < 6; i++, pt = "pt-0")
+                            {
+                                <tr>
+                                    @for (int j = 0; j < 7; j++)
+                                    {
+                                        <td class="@pt">
+                                            @if (((j == 6 && date.DayOfWeek == DayOfWeek.Sunday) || (date.DayOfWeek == ((DayOfWeek)j + 1))) && (date.Month == CurrentDate.Month))
+                                            {
+                                                /*
+                                                <div class="flex items-center justify-center w-full rounded-full cursor-pointer">
+                                                <a role="link" tabindex="0" class="focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-500 hover:bg-indigo-500 text-base w-8 h-8 flex items-center justify-center font-medium text-white bg-indigo-700 rounded-full" target="_blank">8</a>
+                                                </div>
+                                                */
+                                                string ring = "";
+                                                string text = "text-gray-500";
+                                                if (Tasks.Any(i => i.dateForExecution.Contains(date.ToString("yyyy-MM-dd"))))
+                                                {
+                                                    text = "text-indigo-500";
+                                                }
+                                                if (date.Date == CurrentDate.Date)
+                                                {
+                                                    ring = "ring-1 ring-blue-300";
+                                                }
+                                                if (date.Date == DateTime.Now.Date)
+                                                {
+                                                    if (text == "text-indigo-500")
+                                                    {
+                                                        text = "text-red-500";
+                                                    }
+                                                    else
+                                                    {
+                                                        text = "text-green-500";
+                                                    }
+                                                }
+                                                var clickDate = date;
+                                                <div class="w-full h-full">
+                                                    <div class="flex items-center justify-center w-full rounded-full cursor-pointer">
+                                                        <a role="link" tabindex="0" class="focus:outline-none text-base w-8 h-8 flex items-center justify-center font-medium @text rounded-full @ring" target="_blank" @onclick="@(e => SetCurrentDate(clickDate.Year, clickDate.Month, clickDate.Day))">@date.Day</a>
+                                                    </div>
+                                                </div>
+                                                date = date.AddDays(1);
+                                            }
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="md:py-8 py-2 md:px-16 px-5 dark:bg-gray-700 bg-gray-50 rounded-b">
+            <div class="px-0">
+                @foreach (var task in CurrentTasks)
+                {
+                    <div class="border-b pb-4 pt-2 border-gray-400 border-dashed">
+                        <a tabindex="0" class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">@task.internalNumber </a>
+                        <p class="text-sm pt-2 leading-4 leading-none text-gray-600 dark:text-gray-300">
+                            <span class="font-medium">Предмет: </span> @task.commissionSubject <br />
+                            <span class="font-medium">Описание: </span> @task.summaryOfDocument <br />
+
+                            @foreach (var resp in task.responsibles)
+                            {
+                                //@resp.position <br /> @resp.surname <br /> @resp.name <br /> @resp.patronymic <br />
+                            }
+                        </p>
+                    </div>
+                }
+                @if (CurrentTasks is null || CurrentTasks.Length == 0)
+                {
+                    <div class="border-b pb-4 border-gray-400 border-dashed">
+                        <p class="text-xs font-light leading-3 text-gray-500 dark:text-gray-300">  </p>
+                        <a tabindex="0" class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2"></a>
+                        <p class="text-sm pt-2 leading-4 leading-none text-gray-600 dark:text-gray-300">
+                            На этот день ничего не запланировано
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
