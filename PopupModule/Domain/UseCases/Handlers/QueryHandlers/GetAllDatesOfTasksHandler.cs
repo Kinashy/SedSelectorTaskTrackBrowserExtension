@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using testprog.CqrsCore;
-using testprog.PopupModule.Domain.UseCases.Queries;
+using SelectorExtensionForChrome.CqrsCore;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Queries;
 
-namespace testprog.PopupModule.Domain.UseCases.Handlers.QueryHandlers
+namespace SelectorExtensionForChrome.PopupModule.Domain.UseCases.Handlers.QueryHandlers
 {
     public class GetAllDatesOfTasksHandler : IQueryHandler<GetAllDatesOfTasks, List<DateTime>>
     {

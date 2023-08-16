@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using testprog.CqrsCore;
-using testprog.PopupModule.Domain.UseCases.Queries;
-using testprog.PopupModule.Infrastructure.DTOModels;
+using SelectorExtensionForChrome.CqrsCore;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Queries;
+using SelectorExtensionForChrome.PopupModule.Infrastructure.DTOModels;
 
-namespace testprog.PopupModule.Domain.UseCases.Handlers.QueryHandlers
+namespace SelectorExtensionForChrome.PopupModule.Domain.UseCases.Handlers.QueryHandlers
 {
     public class GetSedTasksByDateHandler : IQueryHandler<GetSedTasksByDate, List<SedTaskDTO>>
     {

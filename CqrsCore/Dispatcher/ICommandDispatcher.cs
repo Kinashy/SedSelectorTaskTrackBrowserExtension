@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using System;
-using testprog.CqrsCore.Dispatcher.Exception;
+using SelectorExtensionForChrome.CqrsCore.Dispatcher.Exception;
 using System.ComponentModel.Design;
 
-namespace testprog.CqrsCore.Dispatcher
+namespace SelectorExtensionForChrome.CqrsCore.Dispatcher
 {
     public interface ICommandDispatcher
     {

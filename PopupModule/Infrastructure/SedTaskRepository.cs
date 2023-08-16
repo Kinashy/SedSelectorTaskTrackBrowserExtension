@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
 using System.Threading.Tasks;
-using testprog.PopupModule.Domain;
-using testprog.PopupModule.Infrastructure.DTOModels;
+using SelectorExtensionForChrome.PopupModule.Domain;
+using SelectorExtensionForChrome.PopupModule.Infrastructure.DTOModels;
 
-namespace testprog.PopupModule.Infrastructure
+namespace SelectorExtensionForChrome.PopupModule.Infrastructure
 {
     public class SedTaskRepository : ISedTaskRepository
     {

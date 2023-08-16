@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using testprog.CqrsCore;
-using testprog.PopupModule.Infrastructure.DTOModels;
+using SelectorExtensionForChrome.CqrsCore;
+using SelectorExtensionForChrome.PopupModule.Infrastructure.DTOModels;
 
-namespace testprog.PopupModule.Domain.UseCases.Queries
+namespace SelectorExtensionForChrome.PopupModule.Domain.UseCases.Queries
 {
     public class GetAllControlTasks : IQuery<Task<List<SedTaskDTO>>>
     {

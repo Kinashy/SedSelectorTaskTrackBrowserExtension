@@ -1,8 +1,8 @@
-﻿using testprog.CqrsCore;
-using testprog.PopupModule.Domain.UseCases.Commands;
-using testprog.PopupModule.Domain.UseCases.Queries;
+﻿using SelectorExtensionForChrome.CqrsCore;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Commands;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Queries;
 
-namespace testprog.PopupModule.Domain.UseCases.Handlers.CommandHandlers
+namespace SelectorExtensionForChrome.PopupModule.Domain.UseCases.Handlers.CommandHandlers
 {
     public class RemoveAllSedTasksHandler : ICommandHandler<RemoveAllSedTasks>
     {

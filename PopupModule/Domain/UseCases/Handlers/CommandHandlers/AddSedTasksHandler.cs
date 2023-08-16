@@ -1,7 +1,7 @@
-﻿using testprog.CqrsCore;
-using testprog.PopupModule.Domain.UseCases.Commands;
+﻿using SelectorExtensionForChrome.CqrsCore;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Commands;
 
-namespace testprog.PopupModule.Domain.UseCases.Handlers.CommandHandlers
+namespace SelectorExtensionForChrome.PopupModule.Domain.UseCases.Handlers.CommandHandlers
 {
     public class AddSedTasksHandler : ICommandHandler<AddSedTasks>
     {

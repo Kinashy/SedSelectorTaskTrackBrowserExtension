@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
-using testprog.CqrsCore;
-using testprog.OptionModule.Domain.UseCases.Queries;
+using SelectorExtensionForChrome.CqrsCore;
+using SelectorExtensionForChrome.OptionModule.Domain.UseCases.Queries;
 using WebExtensions.Net;
 using WebExtensions.Net.Storage;
 
-namespace testprog.OptionModule.Domain.UseCases.Handlers.QueryHandlers
+namespace SelectorExtensionForChrome.OptionModule.Domain.UseCases.Handlers.QueryHandlers
 {
     public class GetStorageFieldValueHandler : IQueryHandler<GetStorageFieldValue, Task<string?>>
     {

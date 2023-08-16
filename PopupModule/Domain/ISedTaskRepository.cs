@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
-using testprog.PopupModule.Infrastructure.DTOModels;
+using SelectorExtensionForChrome.PopupModule.Infrastructure.DTOModels;
 
-namespace testprog.PopupModule.Domain
+namespace SelectorExtensionForChrome.PopupModule.Domain
 {
     public interface ISedTaskRepository
     {

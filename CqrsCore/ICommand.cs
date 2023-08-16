@@ -1,4 +1,4 @@
-﻿namespace testprog.CqrsCore
+﻿namespace SelectorExtensionForChrome.CqrsCore
 {
     public interface ICommand
     {

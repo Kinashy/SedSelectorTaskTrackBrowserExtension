@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using testprog.CqrsCore;
-using testprog.OptionModule.Infrastructure.ApiDto;
-namespace testprog.OptionModule.Domain.UseCases.Queries
+using SelectorExtensionForChrome.CqrsCore;
+using SelectorExtensionForChrome.OptionModule.Infrastructure.ApiDto;
+namespace SelectorExtensionForChrome.OptionModule.Domain.UseCases.Queries
 {
     public class Login : IQuery<Task<LoginEntityResponse>>
     {

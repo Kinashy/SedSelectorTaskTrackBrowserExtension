@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using testprog.CqrsCore;
-using testprog.PopupModule.Domain.UseCases.Queries;
-using testprog.PopupModule.Infrastructure.ApiDto;
-using testprog.PopupModule.Infrastructure.DTOModels;
+using SelectorExtensionForChrome.CqrsCore;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Queries;
+using SelectorExtensionForChrome.PopupModule.Infrastructure.ApiDto;
+using SelectorExtensionForChrome.PopupModule.Infrastructure.DTOModels;
 
-namespace testprog.PopupModule.Domain.UseCases.Handlers.QueryHandlers
+namespace SelectorExtensionForChrome.PopupModule.Domain.UseCases.Handlers.QueryHandlers
 {
     public class GetAllControlTasksHandler : IQueryHandler<GetAllControlTasks, Task<List<SedTaskDTO>>>
     {

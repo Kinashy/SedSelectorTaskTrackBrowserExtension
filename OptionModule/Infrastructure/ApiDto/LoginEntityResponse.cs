@@ -1,4 +1,4 @@
-﻿namespace testprog.OptionModule.Infrastructure.ApiDto
+﻿namespace SelectorExtensionForChrome.OptionModule.Infrastructure.ApiDto
 {
     public class LoginEntityResponse // Response: 
     {

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
-using testprog.OptionModule.Infrastructure.ApiDto;
+using SelectorExtensionForChrome.OptionModule.Infrastructure.ApiDto;
 
-namespace testprog.OptionModule.Domain.UseCases.Commands
+namespace SelectorExtensionForChrome.OptionModule.Domain.UseCases.Commands
 {
     public class SetUserInformation : CqrsCore.ICommand
     {

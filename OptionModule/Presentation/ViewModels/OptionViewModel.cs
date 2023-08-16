@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Components.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Http;
 using System.Threading.Tasks;
-using testprog.CqrsCore.Dispatcher;
-using testprog.OptionModule.Domain.UseCases.Commands;
-using testprog.OptionModule.Domain.UseCases.Queries;
-using testprog.OptionModule.Infrastructure.ApiDto;
+using SelectorExtensionForChrome.CqrsCore.Dispatcher;
+using SelectorExtensionForChrome.OptionModule.Domain.UseCases.Commands;
+using SelectorExtensionForChrome.OptionModule.Domain.UseCases.Queries;
+using SelectorExtensionForChrome.OptionModule.Infrastructure.ApiDto;
 
-namespace testprog.OptionModule.Presentation.ViewModels
+namespace SelectorExtensionForChrome.OptionModule.Presentation.ViewModels
 {
     public class OptionViewModel : BasePage
     {

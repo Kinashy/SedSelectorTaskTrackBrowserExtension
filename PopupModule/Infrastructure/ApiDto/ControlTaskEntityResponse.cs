@@ -1,5 +1,5 @@
 ﻿
-namespace testprog.PopupModule.Infrastructure.ApiDto
+namespace SelectorExtensionForChrome.PopupModule.Infrastructure.ApiDto
 {
     public class ControlTaskEntityResponse // Response: api/task/taskControl
     {

@@ -6,23 +6,23 @@ using AutoMapper;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using testprog.Core.Helpers;
-using testprog.CqrsCore;
-using testprog.CqrsCore.Dispatcher;
-using testprog.OptionModule.Domain.UseCases.Commands;
-using testprog.OptionModule.Domain.UseCases.Handlers.CommandHadlers;
-using testprog.OptionModule.Domain.UseCases.Handlers.QueryHandlers;
-using testprog.OptionModule.Domain.UseCases.Queries;
-using testprog.OptionModule.Infrastructure.ApiDto;
-using testprog.PopupModule.Domain;
-using testprog.PopupModule.Domain.UseCases.Commands;
-using testprog.PopupModule.Domain.UseCases.Handlers.CommandHandlers;
-using testprog.PopupModule.Domain.UseCases.Handlers.QueryHandlers;
-using testprog.PopupModule.Domain.UseCases.Queries;
-using testprog.PopupModule.Infrastructure;
-using testprog.PopupModule.Infrastructure.DTOModels;
+using SelectorExtensionForChrome.Core.Helpers;
+using SelectorExtensionForChrome.CqrsCore;
+using SelectorExtensionForChrome.CqrsCore.Dispatcher;
+using SelectorExtensionForChrome.OptionModule.Domain.UseCases.Commands;
+using SelectorExtensionForChrome.OptionModule.Domain.UseCases.Handlers.CommandHadlers;
+using SelectorExtensionForChrome.OptionModule.Domain.UseCases.Handlers.QueryHandlers;
+using SelectorExtensionForChrome.OptionModule.Domain.UseCases.Queries;
+using SelectorExtensionForChrome.OptionModule.Infrastructure.ApiDto;
+using SelectorExtensionForChrome.PopupModule.Domain;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Commands;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Handlers.CommandHandlers;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Handlers.QueryHandlers;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Queries;
+using SelectorExtensionForChrome.PopupModule.Infrastructure;
+using SelectorExtensionForChrome.PopupModule.Infrastructure.DTOModels;
 
-namespace testprog
+namespace SelectorExtensionForChrome
 {
     public static class Program
     {

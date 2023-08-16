@@ -1,8 +1,8 @@
 ﻿
 
-using testprog.CqrsCore;
+using SelectorExtensionForChrome.CqrsCore;
 
-namespace testprog.PopupModule.Domain.UseCases.Commands
+namespace SelectorExtensionForChrome.PopupModule.Domain.UseCases.Commands
 {
     public class RemoveAllSedTasks : ICommand
     {

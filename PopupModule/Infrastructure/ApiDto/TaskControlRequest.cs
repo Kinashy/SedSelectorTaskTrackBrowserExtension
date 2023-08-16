@@ -1,6 +1,6 @@
 ﻿
 
-namespace testprog.PopupModule.Infrastructure.ApiDto
+namespace SelectorExtensionForChrome.PopupModule.Infrastructure.ApiDto
 {
     public class TaskControlRequest // GET: api/task/taskControl
     {

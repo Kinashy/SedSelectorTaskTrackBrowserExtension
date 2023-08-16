@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using testprog.CqrsCore.Dispatcher.Exception;
+using SelectorExtensionForChrome.CqrsCore.Dispatcher.Exception;
 
-namespace testprog.CqrsCore.Dispatcher
+namespace SelectorExtensionForChrome.CqrsCore.Dispatcher
 {
     public interface IQueryDispatcher
     {

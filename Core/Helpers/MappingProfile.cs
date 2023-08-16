@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using testprog.PopupModule.Domain.UseCases.Queries;
-using testprog.PopupModule.Infrastructure.ApiDto;
-using testprog.PopupModule.Infrastructure.DTOModels;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Queries;
+using SelectorExtensionForChrome.PopupModule.Infrastructure.ApiDto;
+using SelectorExtensionForChrome.PopupModule.Infrastructure.DTOModels;
 
-namespace testprog.Core.Helpers
+namespace SelectorExtensionForChrome.Core.Helpers
 {
     public class MappingProfile : Profile
     {

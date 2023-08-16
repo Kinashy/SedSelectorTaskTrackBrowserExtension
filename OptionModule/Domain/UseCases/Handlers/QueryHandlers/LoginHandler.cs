@@ -3,11 +3,11 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using testprog.CqrsCore;
-using testprog.OptionModule.Domain.UseCases.Queries;
-using testprog.OptionModule.Infrastructure.ApiDto;
+using SelectorExtensionForChrome.CqrsCore;
+using SelectorExtensionForChrome.OptionModule.Domain.UseCases.Queries;
+using SelectorExtensionForChrome.OptionModule.Infrastructure.ApiDto;
 
-namespace testprog.OptionModule.Domain.UseCases.Handlers.QueryHandlers
+namespace SelectorExtensionForChrome.OptionModule.Domain.UseCases.Handlers.QueryHandlers
 {
     public class LoginHandler : IQueryHandler<Login, Task<LoginEntityResponse>>
     {

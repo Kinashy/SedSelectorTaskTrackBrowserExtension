@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace testprog.PopupModule.Infrastructure.DTOModels
+namespace SelectorExtensionForChrome.PopupModule.Infrastructure.DTOModels
 {
     public class SedTaskDTO
     {

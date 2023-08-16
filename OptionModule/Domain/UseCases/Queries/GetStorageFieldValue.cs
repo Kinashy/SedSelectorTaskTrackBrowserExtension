@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using testprog.CqrsCore;
+using SelectorExtensionForChrome.CqrsCore;
 
-namespace testprog.OptionModule.Domain.UseCases.Queries
+namespace SelectorExtensionForChrome.OptionModule.Domain.UseCases.Queries
 {
     public class GetStorageFieldValue : IQuery<Task<string?>>
     {

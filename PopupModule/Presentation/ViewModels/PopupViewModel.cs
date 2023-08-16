@@ -5,15 +5,15 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using testprog.CqrsCore.Dispatcher;
-using testprog.OptionModule.Domain.UseCases.Queries;
-using testprog.PopupModule.Domain.UseCases.Commands;
-using testprog.PopupModule.Domain.UseCases.Handlers.QueryHandlers;
-using testprog.PopupModule.Domain.UseCases.Queries;
-using testprog.PopupModule.Infrastructure.DTOModels;
+using SelectorExtensionForChrome.CqrsCore.Dispatcher;
+using SelectorExtensionForChrome.OptionModule.Domain.UseCases.Queries;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Commands;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Handlers.QueryHandlers;
+using SelectorExtensionForChrome.PopupModule.Domain.UseCases.Queries;
+using SelectorExtensionForChrome.PopupModule.Infrastructure.DTOModels;
 using WebExtensions.Net.Management;
 
-namespace testprog.PopupModule.Presentation.ViewModels
+namespace SelectorExtensionForChrome.PopupModule.Presentation.ViewModels
 {
     public class PopupViewModel : BasePage
     {

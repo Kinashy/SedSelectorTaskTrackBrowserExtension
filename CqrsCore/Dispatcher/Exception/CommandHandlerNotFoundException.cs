@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace testprog.CqrsCore.Dispatcher.Exception
+namespace SelectorExtensionForChrome.CqrsCore.Dispatcher.Exception
 {
     public class CommandHandlerNotFoundException : ArgumentNullException
     {

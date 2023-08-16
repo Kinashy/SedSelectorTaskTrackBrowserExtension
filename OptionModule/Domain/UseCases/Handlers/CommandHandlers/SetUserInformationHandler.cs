@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using testprog.CqrsCore;
-using testprog.OptionModule.Domain.UseCases.Commands;
+using SelectorExtensionForChrome.CqrsCore;
+using SelectorExtensionForChrome.OptionModule.Domain.UseCases.Commands;
 using WebExtensions.Net;
 using WebExtensions.Net.Storage;
 
-namespace testprog.OptionModule.Domain.UseCases.Handlers.CommandHadlers
+namespace SelectorExtensionForChrome.OptionModule.Domain.UseCases.Handlers.CommandHadlers
 {
     public class SetUserInformationHandler : ICommandHandler<SetUserInformation>
     {

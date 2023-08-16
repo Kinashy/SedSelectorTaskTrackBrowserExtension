@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "testprog": {
+    "SelectorExtensionForChrome": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

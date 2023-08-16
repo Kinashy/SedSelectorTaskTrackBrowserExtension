@@ -1,4 +1,4 @@
-﻿namespace testprog.PopupModule.Infrastructure.ApiDto
+﻿namespace SelectorExtensionForChrome.PopupModule.Infrastructure.ApiDto
 {
     public class ControlTaskEntityPerson // Response: api/task/tasksOfDocument
     {
