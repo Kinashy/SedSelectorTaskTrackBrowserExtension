@@ -22,8 +22,13 @@ namespace SelectorExtensionForChrome.PopupModule.Infrastructure.ApiDto
         public bool executedNotExpired { get; set; } = false;
         public int controlType { get; set; } = 0;
         public int departmentControl { get; set; } = 7;
-        public string otherUserId { get; set; } = "63e1cf704f51e1ccc2c96e5f";
-        TaskControlRequestResponsibleExecutor otherUser { get; set; } = new TaskControlRequestResponsibleExecutor();
+        public string otherUserId { get; set; } = "64bf397c6e4354b45ea2bb8c";
+        TaskControlRequestResponsibleExecutor otherUser { get; set; } = new TaskControlRequestResponsibleExecutor()
+        {
+            fio = "Селектор Селектор Селектор",
+            departmentName = null,
+            sectionName = "06 Отдел эксплуатации информационных систем, технических средств и каналов связи"
+        };
         public int controlSignType { get; set; } = 0;
         public string token { get; set; } = "";
     }
