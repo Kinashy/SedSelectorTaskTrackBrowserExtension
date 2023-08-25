@@ -37,7 +37,11 @@
     {
       "resources": [
         "framework/*",
-        "content/*"
+        "content/*",
+        "register-service-worker.js",
+        "service-worker.js",
+        "manifest.webmanifest",
+        "images/*"
       ],
       "matches": [ "<all_urls>" ]
     }
