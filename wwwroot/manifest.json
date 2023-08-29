@@ -8,10 +8,10 @@
     "type": "module"
   },
   "icons": {
-    "16":"images/calendar_icon_16.png",
-    "32":"images/calendar_icon_32.png",
-    "48":"images/calendar_icon_48.png",
-    "128":"images/calendar_icon_128.png"
+    "16": "images/calendar_icon_16.png",
+    "32": "images/calendar_icon_32.png",
+    "48": "images/calendar_icon_48.png",
+    "128": "images/calendar_icon_128.png"
   },
   "action": {
     "default_popup": "popup.html"
@@ -23,6 +23,9 @@
   "content_security_policy": {
     "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
   },
+  "host_permissions": [
+    "https://raw.githubusercontent.com/Kinashy/ExtensionAssembly/master/*"
+  ],
   "permissions": [
     "storage",
     "alarms",
@@ -30,7 +33,11 @@
     "notifications",
     "scripting",
     "system.storage",
-    "webRequest"
+    "webRequest",
+    "unlimitedStorage",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "declarativeNetRequestFeedback"
 
   ],
   "web_accessible_resources": [
