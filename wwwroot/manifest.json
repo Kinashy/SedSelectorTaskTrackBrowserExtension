@@ -23,9 +23,6 @@
   "content_security_policy": {
     "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
   },
-  "host_permissions": [
-    "https://raw.githubusercontent.com/Kinashy/ExtensionAssembly/master/*"
-  ],
   "permissions": [
     "storage",
     "alarms",
@@ -34,11 +31,7 @@
     "scripting",
     "system.storage",
     "webRequest",
-    "unlimitedStorage",
-    "declarativeNetRequest",
-    "declarativeNetRequestWithHostAccess",
-    "declarativeNetRequestFeedback"
-
+    "unlimitedStorage"
   ],
   "web_accessible_resources": [
     {
@@ -46,8 +39,6 @@
         "framework/*",
         "content/*",
         "register-service-worker.js",
-        "service-worker.js",
-        "manifest.webmanifest",
         "images/*"
       ],
       "matches": [ "<all_urls>" ]

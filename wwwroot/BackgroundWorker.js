@@ -6,7 +6,6 @@ browser.runtime.onInstalled.addListener(() => {
     url: indexPageUrl
   });
 });
-
 browser.alarms.clearAll();
 const delayInMinutes = 0.1;
 const periodInMinutes = 0.2;
