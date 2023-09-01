@@ -8,7 +8,7 @@ browser.runtime.onInstalled.addListener(() => {
 });
 browser.alarms.clearAll();
 const delayInMinutes = 0.1;
-const periodInMinutes = 0.2;
+const periodInMinutes = 5;
 browser.alarms.onAlarm.addListener(async () => {
     /*const indexPageUrl = browser.runtime.getURL("index.html");
     browser.tabs.create({
