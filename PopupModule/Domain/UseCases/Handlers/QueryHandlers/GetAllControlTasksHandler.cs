@@ -25,8 +25,8 @@ namespace SelectorExtensionForChrome.PopupModule.Domain.UseCases.Handlers.QueryH
             List<SedTaskDTO> tasks = null;
             filterDto.to = $"{filter.To.ToString("yyyy")}-{filter.To.ToString("MM")}-{filter.To.ToString("dd")}T00:00:00.000+03:00";
             filterDto.from = $"{filter.From.ToString("yyyy")}-{filter.From.ToString("MM")}-{filter.From.ToString("dd")}T00:00:00.000+03:00";
-            filterDto.createFrom = $"{filter.CreateFrom.ToString("yyyy")}-{filter.CreateFrom.ToString("MM")}-{filter.CreateFrom.ToString("dd")}T00:00:00.000Z";
-            filterDto.createFrom = $"{filter.CreateTo.ToString("yyyy")}-{filter.CreateTo.ToString("MM")}-{filter.CreateTo.ToString("dd")}T00:00:00.000Z";
+            filterDto.createFrom = $"{filter.CreateFrom.ToString("yyyy")}-{filter.CreateFrom.ToString("MM")}-{filter.CreateFrom.ToString("dd")}T00:00:00.000+03:00";
+            filterDto.createTo = $"{filter.CreateTo.ToString("yyyy")}-{filter.CreateTo.ToString("MM")}-{filter.CreateTo.ToString("dd")}T00:00:00.000+03:00";
             filterDto.token = filter.Token;
             //filterDto = _mapper.Map<TaskControlRequest>(filter);
             try

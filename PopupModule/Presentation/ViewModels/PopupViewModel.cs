@@ -53,7 +53,7 @@ namespace SelectorExtensionForChrome.PopupModule.Presentation.ViewModels
             Progress = 0;
             DateTime createFrom = new DateTime(DateTime.Now.Year, 01, 01);
             DateTime createTo = DateTime.Now.AddDays(1);
-            DateTime from = new DateTime(CurrentDate.Year, CurrentDate.Month, 1);
+            DateTime from = new DateTime(CurrentDate.Year, CurrentDate.Month, 1).AddDays(-1);
             DateTime to = new DateTime(CurrentDate.Year, CurrentDate.Month, DateTime.DaysInMonth(CurrentDate.Year, CurrentDate.Month));
             _Token = await QD.Execute<GetStorageFieldValue, Task<string?>>(new GetStorageFieldValue("token"));
             List<SedTaskDTO> list = await QD.Execute<GetAllControlTasks, Task<List<SedTaskDTO>>>(new GetAllControlTasks(_Token, createFrom, createTo, from, to));
@@ -69,7 +69,7 @@ namespace SelectorExtensionForChrome.PopupModule.Presentation.ViewModels
         {
             DateTime createFrom = new DateTime(DateTime.Now.Year, 01, 01);
             DateTime createTo = DateTime.Now.AddDays(1);
-            DateTime from = new DateTime(CurrentDate.Year, CurrentDate.Month, 1);
+            DateTime from = new DateTime(CurrentDate.Year, CurrentDate.Month, 1).AddDays(-1);
             DateTime to = new DateTime(CurrentDate.Year, CurrentDate.Month, DateTime.DaysInMonth(CurrentDate.Year, CurrentDate.Month));
             _Token = await QD.Execute<GetStorageFieldValue, Task<string?>>(new GetStorageFieldValue("token"));
             List<SedTaskDTO> list = await QD.Execute<GetAllControlTasks, Task<List<SedTaskDTO>>>(new GetAllControlTasks(_Token, createFrom, createTo, from, to));

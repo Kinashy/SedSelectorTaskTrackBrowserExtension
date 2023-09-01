@@ -23,7 +23,7 @@ namespace SelectorExtensionForChrome.PopupModule.Infrastructure.ApiDto
         public int controlType { get; set; } = 0;
         public int departmentControl { get; set; } = 7;
         public string otherUserId { get; set; } = "64bf397c6e4354b45ea2bb8c";
-        TaskControlRequestResponsibleExecutor otherUser { get; set; } = new TaskControlRequestResponsibleExecutor()
+        public TaskControlRequestResponsibleExecutor otherUser { get; set; } = new TaskControlRequestResponsibleExecutor()
         {
             fio = "Селектор Селектор Селектор",
             departmentName = null,
